@@ -1,0 +1,50 @@
+<h1>Menu à proposer</h1>
+
+<form [formGroup]="menuForm">
+  <div>
+    <label for="titre">Titre :</label>
+    <input
+      formControlName="titre"
+      type="text"
+      id="titre"
+      placeholder="Entrez un titre"
+    />
+    <div
+      *ngIf="
+        get_titre()?.errors && (get_titre()?.touched || get_titre()?.dirty)
+      "
+      style="height: 30px; background-color: red; color: white"
+    >
+      titre est required
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea
+      formControlName="description"
+      id="description"
+      rows="3"
+      placeholder="Entrez une description"
+    ></textarea>
+    <div
+      *ngIf="
+        get_description()?.invalid &&
+        get_description()?.touched &&
+        get_description()?.errors?.['minlength']
+      "
+      class=""
+    >
+      Il faut saisir au moins 10 caracteres
+    </div>
+  </div>
+
+  <button
+    (click)="submitMenuForm()"
+    [disabled]="menuForm.invalid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Ajouter
+  </button>
+</form>
