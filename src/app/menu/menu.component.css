@@ -1,0 +1,23 @@
+.menus {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+
+  justify-items: center;
+}
+#image {
+  height: 300px;
+  width: 100%;
+}
+.searchContainer {
+  background-color: beige;
+  width: 100%;
+  padding: 1rem;
+}
+
+#search {
+  width: 60%;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+}

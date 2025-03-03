@@ -10,10 +10,28 @@ import { Menu } from '../menu';
 })
 export class MenuComponent implements OnInit {
   listMenu: Menu[] = [];
+  searchQuery: string = '';
   constructor(private menuService: MenuServiceService) {}
   ngOnInit(): void {
     this.menuService.getallmenu().subscribe((res) => {
       this.listMenu = res;
+    });
+  }
+
+  deleteMenu(id: any) {
+    this.menuService.deleteMenu(id).subscribe((res) => {
+      console.log('menu deleted');
+      this.refreshMenus();
+    });
+  }
+  refreshMenus() {
+    this.menuService.getallmenu().subscribe((res) => {
+      this.listMenu = res;
+    });
+  }
+  searchMenu(id: string) {
+    this.listMenu.filter((menu) => {
+      menu.id == Number(id);
     });
   }
 }

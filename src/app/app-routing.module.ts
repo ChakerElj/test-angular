@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'reservations', component: ReservationsComponent },
   { path: 'menu', component: AddMenuComponent },
-  { path: 'menu/:id', component: SingleMenuComponent },
+  { path: 'menus', component: MenuComponent },
+  { path: 'menus/:id', component: SingleMenuComponent },
   { path: '**', component: NotfoundComponent },
 ];
 

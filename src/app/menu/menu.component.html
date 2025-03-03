@@ -1,6 +1,26 @@
-<ul>
-  <div *ngFor="let menu of listMenu" class="">
-    <li>title : {{ menu.title }}</li>
-    <li>description : {{ menu.description }}</li>
+<div class="searchContainer">
+  <input
+    [(ngModel)]="searchQuery"
+    (change)="searchMenu(searchQuery)"
+    id="search"
+    placeholder="search"
+    type="text"
+  />
+</div>
+<div class="menus">
+  <div *ngFor="let menu of listMenu; let i = index">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ menu.title }}</h5>
+        <p class="card-text">
+          {{ menu.description }}
+        </p>
+        <a [routerLink]="['/menus', menu.id]" class="btn btn-primary"
+          >Details</a
+        >
+        <a (click)="deleteMenu(menu.id)" class="btn btn-danger">Delete</a>
+      </div>
+      <img id="image" [src]="menu.image" class="card-img-top" alt="..." />
+    </div>
   </div>
-</ul>
+</div>

@@ -16,7 +16,7 @@ export class AddMenuComponent implements OnInit {
     private router: Router
   ) {}
   menuForm!: FormGroup;
-  id: number = 0;
+
   ngOnInit(): void {
     this.menuForm = new FormGroup({
       titre: new FormControl('', [Validators.required]),
@@ -34,13 +34,8 @@ export class AddMenuComponent implements OnInit {
     return this.menuForm.get('description');
   }
 
-  increment() {
-    this.id++;
-  }
-
   submitMenuForm() {
     let menu: Menu = {
-      id: this.id,
       title: this.get_titre()?.value,
       description: this.get_description()?.value,
       approved: false,
@@ -48,7 +43,7 @@ export class AddMenuComponent implements OnInit {
       image: '',
       reservations: [],
     };
-    this.increment();
+
     this.menuService.addmenu(menu).subscribe(
       (res) => {
         console.log(res);
@@ -59,6 +54,6 @@ export class AddMenuComponent implements OnInit {
         console.log('Erreur lors de l ajout du menu');
       }
     );
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/menus']);
   }
 }
