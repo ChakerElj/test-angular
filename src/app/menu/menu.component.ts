@@ -30,8 +30,12 @@ export class MenuComponent implements OnInit {
     });
   }
   searchMenu(id: string) {
-    this.listMenu.filter((menu) => {
-      menu.id == Number(id);
+    if (this.searchQuery.trim() === '' || !this.searchQuery) {
+      this.refreshMenus();
+    }
+    this.listMenu = this.listMenu.filter((menu) => {
+      return menu.id === id;
     });
+    console.log(this.listMenu);
   }
 }
